@@ -2,7 +2,7 @@
 
 <versionBadge>![Version 0.1.0](https://img.shields.io/badge/version-0.1.0-blue.svg)</versionBadge>
 [![C](https://img.shields.io/badge/Language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
-[![CI/CD Status Badge](https://github.com/mofosyne/kv_parse_value/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/mofosyne/kv_parse_value/actions)
+[![CI/CD Status Badge](https://github.com/mofosyne/kv_parse_value.c/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/mofosyne/kv_parse_value/actions)
 
 Simple ANSI C Key Value String Parser
 

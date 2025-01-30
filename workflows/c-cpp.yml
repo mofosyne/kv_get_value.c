@@ -1,12 +1,10 @@
-name: CI/CD Pipeline
+name: C/C++ CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
   build:
