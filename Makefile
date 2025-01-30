@@ -26,11 +26,11 @@ test: test.c kv_parse_value.c
 	@./test
 	@$(RM) test
 
-#	@echo "KV_PARSE_QUOTED_STRINGS"
-#	@$(CC) $(CFLAGS) $(LDFLAGS) -g2 -O0 $^ -o $@ -DKV_PARSE_QUOTED_STRINGS
-#	size test
-#	@./test
-#	@$(RM) test
+	@echo "KV_PARSE_QUOTED_STRINGS"
+	@$(CC) $(CFLAGS) $(LDFLAGS) -g2 -O0 $^ -o $@ -DKV_PARSE_QUOTED_STRINGS
+	size test
+	@./test
+	@$(RM) test
 
 #	@echo "KV_PARSE_WHITESPACE_SKIP"
 #	@$(CC) $(CFLAGS) $(LDFLAGS) -g2 -O0 $^ -o $@ -DKV_PARSE_WHITESPACE_SKIP
