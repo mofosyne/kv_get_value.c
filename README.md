@@ -10,7 +10,8 @@ Writeup about this mini project <https://briankhuu.com/blog/2025/01/30/simple-ke
 
 This function searches for a specified key in a formatted key-value string
 and extracts its corresponding value into the provided buffer.
+
 ## Supported Features:
-    - **Whitespace Skipping** (`KV_PARSE_WHITESPACE_SKIP`): Ignores spaces and tabs around keys and values.
-    - **Quoted String Support** (`KV_PARSE_QUOTED_STRINGS`): Handles values enclosed in single (`'`) or double (`"`) quotes.
-    - **Key Delimiters**: Supports both `=` and `:` as key-value separators.
+  - **Whitespace Skipping** (`KV_PARSE_WHITESPACE_SKIP`): Ignores spaces and tabs around keys and values.
+  - **Quoted String Support** (`KV_PARSE_QUOTED_STRINGS`): Handles values enclosed in single (`'`) or double (`"`) quotes.
+  - **Key Delimiters**: Supports both `=` and `:` as key-value separators.
