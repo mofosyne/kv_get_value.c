@@ -4,6 +4,8 @@
 [![C](https://img.shields.io/badge/Language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
 [![CI/CD Status Badge](https://github.com/mofosyne/kv_parse_value.c/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/mofosyne/kv_parse_value/actions)
 
+**KV_PARSE_WHITESPACE_SKIP test is failing at the moment**
+
 Simple ANSI C Key Value String Parser
 
 Writeup about this mini project <https://briankhuu.com/blog/2025/01/30/simple-key-value-text-parser-in-c/>
