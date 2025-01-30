@@ -6,8 +6,7 @@ INSTALL ?= install
 
 PREFIX  ?= /usr/local
 
-CFLAGS += -Wall -std=c99 -pedantic
-
+CFLAGS += -Wall -std=c99 -pedantic  -g2 -Og
 
 .PHONY: all
 all: test
@@ -21,28 +20,28 @@ readme_update:
 .PHONY: test
 test: test.c kv_parse_value.c
 	@echo "MINIMUM"
-	@$(CC) $(CFLAGS) $(LDFLAGS) -g2 -O0 $^ -o $@
+	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 	size test
 	@./test
 	@$(RM) test
 
 	@echo "KV_PARSE_QUOTED_STRINGS"
-	@$(CC) $(CFLAGS) $(LDFLAGS) -g2 -O0 $^ -o $@ -DKV_PARSE_QUOTED_STRINGS
+	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -DKV_PARSE_QUOTED_STRINGS
 	size test
 	@./test
 	@$(RM) test
 
-#	@echo "KV_PARSE_WHITESPACE_SKIP"
-#	@$(CC) $(CFLAGS) $(LDFLAGS) -g2 -O0 $^ -o $@ -DKV_PARSE_WHITESPACE_SKIP
-#	size test
-#	@./test
-#	@$(RM) test
+	@echo "KV_PARSE_WHITESPACE_SKIP"
+	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -DKV_PARSE_WHITESPACE_SKIP
+	size test
+	@./test
+	@$(RM) test
 
-#	@echo "ALL"
-#	@$(CC) $(CFLAGS) $(LDFLAGS) -g2 -O0 $^ -o $@ -DKV_PARSE_WHITESPACE_SKIP -DKV_PARSE_QUOTED_STRINGS
-#	size test
-#	@./test
-#	@$(RM) test
+	@echo "ALL"
+	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -DKV_PARSE_WHITESPACE_SKIP -DKV_PARSE_QUOTED_STRINGS
+	size test
+	@./test
+	@$(RM) test
 
 .PHONY: format
 format:
