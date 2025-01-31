@@ -37,7 +37,6 @@
  * }
  * @endcode
  */
-
 unsigned int kv_parse_value(const char *str, const char *key, char *value, unsigned int value_max)
 {
     for (; *str != '\0'; str++)
@@ -100,6 +99,11 @@ unsigned int kv_parse_value(const char *str, const char *key, char *value, unsig
             {
                 value[i] = '\0';
                 return i;
+            }
+            else if (quote != '\0' && *(str - 1) == '\\' && *str == quote)
+            {
+                value[i - 1] = *str;
+                continue;
             }
 #endif
 
