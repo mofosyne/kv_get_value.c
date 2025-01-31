@@ -1,11 +1,13 @@
 {
   "name": "kv_parse_value",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repo": "mofosyne/kv_parse_value.c",
   "description": "Very simple and well tested C library for parsing key value strings with zero-copy and no mallocs.",
   "license": "PUBLIC DOMAIN",
   "src": [
     "kv_parse_value.c",
-    "kv_parse_value.h"
+    "kv_parse_value.h",
+    "kv_file_parse_value.c",
+    "kv_file_parse_value.h"
   ]
 }

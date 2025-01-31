@@ -1,5 +1,17 @@
-/* Simple ANSI C KV Parser
- * 2025 Brian Khuu (This Code Is Released To The Public Domain) */
+/**
+ * @file kv_file_parse_value.c
+ * @brief Simple ANSI C Key-Value Parser.
+ *
+ * This file contains a parser function that extracts values associated with keys in a formatted
+ * key-value file (e.g., "key=value" or "key: value").
+ *
+ * ## Supported Features:
+ * - **Whitespace Skipping** (`KV_PARSE_WHITESPACE_SKIP`): Ignores spaces and tabs around keys and values.
+ * - **Quoted String Support** (`KV_PARSE_QUOTED_STRINGS`): Handles values enclosed in single (`'`) or double (`"`) quotes.
+ * - **Key Delimiters**: Supports both `=` and `:` as key-value separators.
+ *
+ * This code is released to the public domain by Brian Khuu in 2025.
+ */
 
 #include <stdio.h>
 
@@ -31,7 +43,7 @@
  * FILE *temp = tmpfile();
  * fputs("username=admin\npassword=1234", temp);
  * rewind(temp);
- * unsigned int len = kv_parse_value(temp, "username", buffer, sizeof(buffer));
+ * unsigned int len = kv_file_parse_value(temp, "username", buffer, sizeof(buffer));
  * if (len > 0) {
  *     printf("Username: %s\n", buffer);
  * } else {
