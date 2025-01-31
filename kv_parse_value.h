@@ -1,3 +1,5 @@
+#ifndef KV_PARSE_VALUE_H
+#define KV_PARSE_VALUE_H
 /**
  * @brief Parses a key-value pair from a given string.
  *
@@ -32,3 +34,4 @@
  * @endcode
  */
 unsigned int kv_parse_value(const char *str, const char *key, char *value, unsigned int value_max);
+#endif
