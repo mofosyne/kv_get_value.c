@@ -116,8 +116,8 @@ void run_tests()
     memset(buffer, 0, sizeof(buffer));
     buffer_count = kv_parse_value("path=\"/home/\\\"user=data\"", "path", buffer, sizeof(buffer));
 #ifdef KV_PARSE_QUOTED_STRINGS
-    assert(buffer_count == 17);
-    assert(strcmp(buffer, "/home/\\\"user=data") == 0);
+    assert(buffer_count == 16);
+    assert(strcmp(buffer, "/home/\"user=data") == 0);
 #else
     assert(buffer_count == 19);
     assert(strcmp(buffer, "\"/home/\\\"user=data\"") == 0);
