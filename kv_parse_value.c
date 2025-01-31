@@ -90,7 +90,7 @@ unsigned int kv_parse_value(const char *str, const char *key, char *value, unsig
                 /* End Of Line. Return Value */
                 value[i] = '\0';
 #ifdef KV_PARSE_WHITESPACE_SKIP
-                while (value[i - 1] == ' ' || value[i - 1] == '\t')
+                while (i > 0 && (value[i - 1] == ' ' || value[i - 1] == '\t'))
                 {
                     i--;
                     value[i] = '\0';
