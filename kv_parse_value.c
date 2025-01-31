@@ -1,4 +1,3 @@
-
 /* Simple ANSI C KV Parser
  * 2025 Brian Khuu (This Code Is Released To The Public Domain)
  * To test this function run `cat kvparser.h | tcc -DKV_PARSER_TEST -run -` */
@@ -9,21 +8,20 @@
  * 2025 Brian Khuu https://briankhuu.com/ (This function is dedicated to Public Domain)
  * https://briankhuu.com/blog/2025/01/30/simple-key-value-text-parser-in-c/
  *
- * This function searches for a specified key in a formatted key-value string
- * and extracts its corresponding value into the provided buffer.
+ * This function extracts the value associated with a specified key in a formatted key-value string.
  *
  * ## Supported Features:
  * - **Whitespace Skipping** (`KV_PARSE_WHITESPACE_SKIP`): Ignores spaces and tabs around keys and values.
  * - **Quoted String Support** (`KV_PARSE_QUOTED_STRINGS`): Handles values enclosed in single (`'`) or double (`"`) quotes.
  * - **Key Delimiters**: Supports both `=` and `:` as key-value separators.
  *
- * @param str Input string containing multiple key-value pairs (e.g., `"key=value"`) seperated by newline.
+ * @param str Input string containing multiple key-value pairs (e.g., "key=value") separated by newline.
  * @param key The key to search for in the input string.
  * @param value Output buffer to store the extracted value.
  * @param value_max Maximum length of the output buffer (`value`), including the null terminator.
  * @return The length of the extracted value (excluding the null terminator) on success, or `0` if the key is not found.
  *
- * @note If `KV_PARSE_WHITESPACE_SKIP` is defined, leading and trailing whitespace is ignored.
+ * @note If `KV_PARSE_WHITESPACE_SKIP` is defined, leading and trailing whitespace is ignored before returning the value.
  * @note If `KV_PARSE_QUOTED_STRINGS` is defined, values can be enclosed in single (`'`) or double (`"`) quotes.
  *
  * @example Usage Example:
@@ -87,7 +85,7 @@ unsigned int kv_parse_value(const char *str, const char *key, char *value, unsig
         {
             if (*str == '\0' || *str == '\r' || *str == '\n')
             {
-                /* End Of Line. Return Value */
+                /* End Of Line. Trim trailing whitespace before returning the value. */
                 value[i] = '\0';
 #ifdef KV_PARSE_WHITESPACE_SKIP
                 while (i > 0 && (value[i - 1] == ' ' || value[i - 1] == '\t'))
@@ -113,7 +111,7 @@ unsigned int kv_parse_value(const char *str, const char *key, char *value, unsig
             }
             else if (quote != '\0' && *(str - 1) == '\\' && *str == quote)
             {
-                /* Escaped Character In Quoted String */
+                /* Escaped Quote Character In Quoted String */
                 value[i - 1] = *str;
                 continue;
             }
