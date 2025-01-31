@@ -18,28 +18,24 @@ readme_update:
 	jq -r '.version' clib.json | xargs -I{} sed -i 's|<versionBadge>.*</versionBadge>|<versionBadge>![Version {}](https://img.shields.io/badge/version-{}-blue.svg)</versionBadge>|' README.md
 
 .PHONY: test
-test: test.c kv_parse_value.c
-	@echo "MINIMUM"
+test: test.c kv_parse_value.c kv_file_parse_value.c
+	@echo "# MINIMUM"
 	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
-	size test
 	@./test
 	@$(RM) test
 
-	@echo "KV_PARSE_QUOTED_STRINGS"
+	@echo "# KV_PARSE_QUOTED_STRINGS"
 	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -DKV_PARSE_QUOTED_STRINGS
-	size test
 	@./test
 	@$(RM) test
 
-	@echo "KV_PARSE_WHITESPACE_SKIP"
+	@echo "# KV_PARSE_WHITESPACE_SKIP"
 	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -DKV_PARSE_WHITESPACE_SKIP
-	size test
 	@./test
 	@$(RM) test
 
-	@echo "ALL"
+	@echo "# ALL"
 	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -DKV_PARSE_WHITESPACE_SKIP -DKV_PARSE_QUOTED_STRINGS
-	size test
 	@./test
 	@$(RM) test
 

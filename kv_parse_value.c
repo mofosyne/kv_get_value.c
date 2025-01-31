@@ -47,22 +47,28 @@ unsigned int kv_parse_value(const char *str, const char *key, char *value, unsig
             str++;
         }
 #endif
+
+        /* Check For Key */
         for (int i = 0; *str != '\0' && key[i] != '\0'; i++, str++)
         {
+            /* Key Mismatched. Skip Line */
             if (*str != key[i])
             {
                 goto skip_line;
             }
         }
+
 #ifdef KV_PARSE_WHITESPACE_SKIP
         while (*str == ' ' || *str == '\t')
         {
             str++;
         }
 #endif
+
+        /* Check For Key Value Delimiter */
         if (*str != '=' && *str != ':')
         {
-            return 0;
+            goto skip_line;
         }
         str++;
 
@@ -72,6 +78,8 @@ unsigned int kv_parse_value(const char *str, const char *key, char *value, unsig
             str++;
         }
 #endif
+
+        /* Copy Value To Buffer */
 #ifdef KV_PARSE_QUOTED_STRINGS
         char quote = '\0';
 #endif
@@ -79,6 +87,7 @@ unsigned int kv_parse_value(const char *str, const char *key, char *value, unsig
         {
             if (*str == '\0' || *str == '\r' || *str == '\n')
             {
+                /* End Of Line. Return Value */
                 value[i] = '\0';
 #ifdef KV_PARSE_WHITESPACE_SKIP
                 while (value[i - 1] == ' ' || value[i - 1] == '\t')
@@ -92,16 +101,19 @@ unsigned int kv_parse_value(const char *str, const char *key, char *value, unsig
 #ifdef KV_PARSE_QUOTED_STRINGS
             else if (quote == '\0' && (*str == '\'' || *str == '"'))
             {
+                /* Start Of Quoted String */
                 quote = *str;
                 continue;
             }
             else if (quote != '\0' && *(str - 1) != '\\' && *str == quote)
             {
+                /* End Of Quoted String. Return Value */
                 value[i] = '\0';
                 return i;
             }
             else if (quote != '\0' && *(str - 1) == '\\' && *str == quote)
             {
+                /* Escaped Character In Quoted String */
                 value[i - 1] = *str;
                 continue;
             }
@@ -110,12 +122,23 @@ unsigned int kv_parse_value(const char *str, const char *key, char *value, unsig
             value[i++] = *str;
         }
 
+        /* Value too large for buffer. Don't return a value. */
+        value[0] = '\0';
+        return 0;
+
     skip_line:
-        while (*str != '\n' && *str != '\0')
+        /* Search for start of next line */
+        while (*str != '\n')
         {
+            if (*str == '\0')
+            {
+                /* End of string. Key was not found. */
+                return 0;
+            }
             str++;
         }
     }
 
+    /* End of string. Key was not found. */
     return 0;
 }
