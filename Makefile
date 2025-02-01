@@ -18,7 +18,7 @@ readme_update:
 	jq -r '.version' clib.json | xargs -I{} sed -i 's|<versionBadge>.*</versionBadge>|<versionBadge>![Version {}](https://img.shields.io/badge/version-{}-blue.svg)</versionBadge>|' README.md
 
 .PHONY: test
-test: test.c kv_parse_value.c kv_file_parse_value.c
+test: test.c kv_get_value.c kv_file_get_value.c
 	@echo "# No Extra Features Enabled"
 	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 	@./test

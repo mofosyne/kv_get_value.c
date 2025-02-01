@@ -1,5 +1,5 @@
 /**
- * @file kv_parse_value.c
+ * @file kv_get_value.c
  * @brief Simple ANSI C Key-Value Parser.
  *
  * This file contains a parser function that extracts values associated with keys in a formatted
@@ -38,7 +38,7 @@
  * @example Usage Example:
  * @code
  * char buffer[50];
- * unsigned int len = kv_parse_value("username=admin\npassword=1234", "username", buffer, sizeof(buffer));
+ * unsigned int len = kv_get_value("username=admin\npassword=1234", "username", buffer, sizeof(buffer));
  * if (len > 0) {
  *     printf("Username: %s\n", buffer);
  * } else {
@@ -46,7 +46,7 @@
  * }
  * @endcode
  */
-unsigned int kv_parse_value(const char *str, const char *key, char *value, unsigned int value_max)
+unsigned int kv_get_value(const char *str, const char *key, char *value, unsigned int value_max)
 {
     for (; *str != '\0'; str++)
     {
