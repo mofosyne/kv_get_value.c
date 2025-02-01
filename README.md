@@ -17,10 +17,34 @@ unsigned int kv_parse_value(const char *str, const char *key, char *value, unsig
 unsigned int kv_file_parse_value(FILE *file, const char *key, char *value, unsigned int value_max);
 ```
 
+This above will be able to read Bash Style key value files
+
+```c
+XDG_SESSION_DESKTOP=cinnamon
+QT_QPA_PLATFORMTHEME=qt5ct
+XDG_SESSION_TYPE=x11
+```
+
+But we can also interpret ':' and also skip whitespace with `KV_PARSE_WHITESPACE_SKIP` compile flag.
+
+```yaml
+XDG_SESSION_DESKTOP   : cinnamon
+QT_QPA_PLATFORMTHEME  : qt5ct
+XDG_SESSION_TYPE      : x11
+```
+
+And if you want escaped quote strings like in c then you can use `KV_PARSE_QUOTED_STRINGS` compile flag.
+
+```c
+XDG_SESSION_DESKTOP="cinnamon"
+QT_QPA_PLATFORMTHEME="qt5ct"
+XDG_SESSION_TYPE="x11"
+```
+
 ## Supported Features:
   - **Whitespace Skipping** (`KV_PARSE_WHITESPACE_SKIP`): Ignores spaces and tabs around keys and values.
   - **Quoted String Support** (`KV_PARSE_QUOTED_STRINGS`): Handles values enclosed in single (`'`) or double (`"`) quotes.
-  - **Key Delimiters**: Supports both `=` and `:` as key-value separators.
+  - **Key Delimiters** : Supports both `=` and `:` as key-value separators.
 
 # Usage Example:
 
