@@ -16,13 +16,13 @@ This function searches for a specified key in a formatted key-value string
 and extracts its corresponding value into the provided buffer.
 
 Pros:
-    * Self contained. Only stdio.h required for `kv_file_get_value()`
-    * Minimise Size
-    * Minimise Complexity
+  * Self contained. Only stdio.h required for `kv_file_get_value()`
+  * Minimise Size
+  * Minimise Complexity
 
 Cons:
-    * Scan entire file for one key. This gets very inefficient for larger KV files. But practically very fast for small projects.
-    * Not easy to parse INI file, you would need to read an INI section into it's own buffer then pass it to this function
+  * Scan entire file for one key. This gets very inefficient for larger KV files. But practically very fast for small projects.
+  * Not easy to parse INI file, you would need to read an INI section into it's own buffer then pass it to this function
 
 ```c
 unsigned int kv_get_value(const char *str, const char *key, char *value, unsigned int value_max);
