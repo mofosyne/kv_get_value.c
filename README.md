@@ -8,6 +8,8 @@ Simple ANSI C Key Value String Parser
 
 Writeup about this mini project <https://briankhuu.com/blog/2025/01/30/simple-key-value-text-parser-in-c/>
 
+If you need a kv parser that can be more easily modified. Consider <https://github.com/mofosyne/kv_parse.c>
+
 ## Get Value
 
 This function searches for a specified key in a formatted key-value string
