@@ -20,25 +20,25 @@ readme_update:
 .PHONY: test
 test: test.c kv_get_value.c kv_file_get_value.c
 	@echo "# No Extra Features Enabled"
-	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
+	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -DKV_PARSE_DISABLE_WHITESPACE_SKIP -DKV_PARSE_DISABLE_QUOTED_STRINGS
 	@./test
 	@$(RM) test
 
 	@echo ""
 	@echo "# KV_PARSE_QUOTED_STRINGS enabled"
-	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -DKV_PARSE_QUOTED_STRINGS
+	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -DKV_PARSE_DISABLE_WHITESPACE_SKIP
 	@./test
 	@$(RM) test
 
 	@echo ""
 	@echo "# KV_PARSE_WHITESPACE_SKIP enabled"
-	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -DKV_PARSE_WHITESPACE_SKIP
+	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@  -DKV_PARSE_DISABLE_QUOTED_STRINGS
 	@./test
 	@$(RM) test
 
 	@echo ""
 	@echo "# ALL Features Enabled"
-	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -DKV_PARSE_WHITESPACE_SKIP -DKV_PARSE_QUOTED_STRINGS
+	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 	@./test
 	@$(RM) test
 

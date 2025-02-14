@@ -1,6 +1,6 @@
 # kv_get_value.c
 
-<versionBadge>![Version 1.0.0](https://img.shields.io/badge/version-1.0.0-blue.svg)</versionBadge>
+<versionBadge>![Version 1.0.1](https://img.shields.io/badge/version-1.0.1-blue.svg)</versionBadge>
 [![C](https://img.shields.io/badge/Language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
 [![CI/CD Status Badge](https://github.com/mofosyne/kv_get_value.c/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/mofosyne/kv_get_value/actions)
 
@@ -37,7 +37,7 @@ QT_QPA_PLATFORMTHEME=qt5ct
 XDG_SESSION_TYPE=x11
 ```
 
-But we can also interpret ':' and also skip whitespace with `KV_PARSE_WHITESPACE_SKIP` compile flag.
+But we can also interpret ':' and also skip whitespace. (Disable via `KV_PARSE_DISABLE_WHITESPACE_SKIP` compile flag).
 
 ```yaml
 XDG_SESSION_DESKTOP   : cinnamon
@@ -45,7 +45,7 @@ QT_QPA_PLATFORMTHEME  : qt5ct
 XDG_SESSION_TYPE      : x11
 ```
 
-And if you want escaped quote strings like in c then you can use `KV_PARSE_QUOTED_STRINGS` compile flag.
+You can also escaped quote strings like in c (Disable via `KV_PARSE_DISABLE_QUOTED_STRINGS` compile flag).
 
 ```c
 XDG_SESSION_DESKTOP="cinnamon"
@@ -54,8 +54,8 @@ XDG_SESSION_TYPE="x11"
 ```
 
 ## Supported Features:
-  - **Whitespace Skipping** (`KV_PARSE_WHITESPACE_SKIP`): Ignores spaces and tabs around keys and values.
-  - **Quoted String Support** (`KV_PARSE_QUOTED_STRINGS`): Handles values enclosed in single (`'`) or double (`"`) quotes.
+  - **Whitespace Skipping** (Disable via: `KV_PARSE_DISABLE_WHITESPACE_SKIP`): Ignores spaces and tabs around keys and values.
+  - **Quoted String Support** (Disable via: `KV_PARSE_DISABLE_QUOTED_STRINGS`): Handles values enclosed in single (`'`) or double (`"`) quotes.
   - **Key Delimiters** : Supports both `=` and `:` as key-value separators.
 
 # Usage Example:
@@ -71,6 +71,7 @@ if (len > 0) {
     printf("Key not found.\n");
 }
 ```
+
 ## kv_file_get_value()
 
 ```c

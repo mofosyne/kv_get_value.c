@@ -5,11 +5,6 @@
  * This file contains a parser function that extracts values associated with keys in a formatted
  * key-value file (e.g., "key=value" or "key: value").
  *
- * ## Supported Features:
- * - **Whitespace Skipping** (`KV_PARSE_WHITESPACE_SKIP`): Ignores spaces and tabs around keys and values.
- * - **Quoted String Support** (`KV_PARSE_QUOTED_STRINGS`): Handles values enclosed in single (`'`) or double (`"`) quotes.
- * - **Key Delimiters**: Supports both `=` and `:` as key-value separators.
- *
  * This code is released to the public domain by Brian Khuu in 2025.
  */
 #ifndef kv_file_get_value_H
@@ -24,8 +19,8 @@
  * This function extracts the value associated with a specified key in a formatted key-value file.
  *
  * ## Supported Features:
- * - **Whitespace Skipping** (`KV_PARSE_WHITESPACE_SKIP`): Ignores spaces and tabs around keys and values.
- * - **Quoted String Support** (`KV_PARSE_QUOTED_STRINGS`): Handles values enclosed in single (`'`) or double (`"`) quotes.
+ * - **Whitespace Skipping** (Disable Via `KV_PARSE_DISABLE_WHITESPACE_SKIP`): Ignores spaces and tabs around keys and values.
+ * - **Quoted String Support** (Disable Via `KV_PARSE_DISABLE_QUOTED_STRINGS`): Handles values enclosed in single (`'`) or double (`"`) quotes.
  * - **Key Delimiters**: Supports both `=` and `:` as key-value separators.
  *
  * @note If `KV_PARSE_WHITESPACE_SKIP` is defined, leading and trailing whitespace is ignored before returning the value.
